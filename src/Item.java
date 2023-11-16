@@ -18,6 +18,15 @@ public class Item {
 		System.out.println(desc);
 	}
 	
+	public void take() {
+		if(isHeavy()){
+			System.out.println("That's too heavy to carry around");
+		} else {
+			Game.inventory.add(Game.getCurrentRoom().removeItem(name));
+			System.out.println("You take the "+ name + ".");
+		}
+	}
+	
 	public boolean isUsed() {
 		return used;
 	}

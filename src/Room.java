@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Room {
+public class Room implements Serializable{
 	
 	private String description;
 	private Room east;
@@ -11,15 +12,31 @@ public class Room {
 	private Room down;
 	private boolean locked; //is the room locked?
 	private String name;
+	private String roomID;
 	
 	private HashMap<String, Item> roomItems;
+	private HashMap<String, NPC> roomNPCs;
 	
 	
-	public Room(String n, String desc) {
+	public Room(String n) {
 		name = n;
-		description = desc;
+		roomID = n;
 		roomItems = new HashMap<String, Item>();
+		roomNPCs = new HashMap<String, NPC>();
 		locked = false;
+		World.rooms.put(name, this);
+	}
+	
+	public void addNPC(NPC npc) {
+		roomNPCs.put(npc.getName(), npc);
+	}
+	
+	public NPC getNPC(String name) {
+		return roomNPCs.get(name);
+	}
+	
+	public void setRoomID(String id) {
+		roomID = id;
 	}
 	
 	public boolean isLocked() {
@@ -90,6 +107,6 @@ public class Room {
 	}
 	
 	public String toString() {
-		return description;
+		return Game.RoomDescription.get(roomID);
 	}
 }

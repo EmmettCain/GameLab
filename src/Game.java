@@ -1,16 +1,28 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Game {
 	
 	private static Room currentRoom;
-	private static ArrayList<Item> inventory = new ArrayList<Item>();
+	public static ArrayList<Item> inventory = new ArrayList<Item>();
+	public static HashMap<String, String> RoomDescription = new HashMap<String, String>();
 	
 	
 		public static void main(String[] args) {
+			RoomDesc();
+			System.out.println("You wake up in a room you have never seen before, you must find you way back to your world");
 			Scanner scan = new Scanner(System.in);
 			String playerCommand = " ";
 			String[] input;
+			Item x;
+			NPC npc;
 			currentRoom = World.buildWorld();
 			System.out.println(currentRoom);
 			while(!playerCommand.equals("x")) {
@@ -56,24 +68,23 @@ public class Game {
 				
 						if(currentRoom.hasItem(input[1])) {
 							Item item = currentRoom.getItem(input[1]);
-							if(item.isHeavy()){
-								System.out.println("That's too heavy to carry around");
-							} else {
-								inventory.add(currentRoom.removeItem(input[1]));
-								System.out.println("You take the "+input[1]);
-							}
+							item.take();
 						} else {
 							System.out.println("There is no "+input[1]+"!");
 						}
 				} else if (input[0].equals("use")) {
-					for(Item i : inventory) {
-						if(i.getName().equals(input[1])) {
-							System.out.println("You use the " + input[1]);
+						x = getItem(input[1]);
+						if(x == null) {
+							System.out.println("You can not use the " + input[1] + ".");
 						} else {
-							System.out.println("You can not use the " + input[1]);
+							x.use();
 						}
-					}
-				} else {
+				} else if(input[0].equals("save")) {
+					saveGame();
+				}else if(input[0].equals("talk")){
+					npc = currentRoom.getNPC(input[1]);
+					npc.talk();
+				}else {
 					System.out.println("Invalid command.");
 				}
 
@@ -137,6 +148,52 @@ public class Game {
 			return false;
 		}
 		
+		public static void RoomDesc() {
+			try {
+				Scanner scan = new Scanner(new File("RoomDescriptions"));
+				while(scan.hasNextLine()) {
+					String name = scan.nextLine();
+					String desc = scan.nextLine();
+					scan.nextLine();
+					RoomDescription.put(name, desc);
+				}
+			} catch(IOException ex) {
+				Game.print("Error: Cannot load room descriptions");
+			}
+		}
+		
+		public static void saveGame() {
+			File saveFile = new File("save");
+			try {
+				saveFile.createNewFile();
+				ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(saveFile));
+				stream.writeObject(currentRoom);
+				stream.writeObject(inventory);
+				stream.writeObject(World.rooms);
+				stream.close();
+				Game.print("game saved.");
+			} catch(IOException e) {
+				Game.print("ERROR: Cannot save file.");
+				e.printStackTrace();
+			}
+		}
+		
+		public static void loadGame() {
+			try {
+				ObjectInputStream stream = new ObjectInputStream(new FileInputStream(new File("save")));
+				currentRoom = (Room) stream.readObject();
+				inventory = (ArrayList<Item>) stream.readObject();
+				World.rooms = (HashMap<String, Room>) stream.readObject();
+				stream.close();
+			} catch (IOException ex) {
+				Game.print("Error loading file");
+				ex.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		
 		
 }
