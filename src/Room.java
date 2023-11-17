@@ -15,7 +15,7 @@ public class Room implements Serializable{
 	private String roomID;
 	
 	private HashMap<String, Item> roomItems;
-	private HashMap<String, NPC> roomNPCs;
+	private static HashMap<String, NPC> roomNPCs;
 	
 	
 	public Room(String n) {
@@ -31,7 +31,7 @@ public class Room implements Serializable{
 		roomNPCs.put(npc.getName(), npc);
 	}
 	
-	public NPC getNPC(String name) {
+	public static NPC getNPC(String name) {
 		return roomNPCs.get(name);
 	}
 	

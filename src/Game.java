@@ -13,12 +13,12 @@ public class Game {
 	private static Room currentRoom;
 	public static ArrayList<Item> inventory = new ArrayList<Item>();
 	public static HashMap<String, String> RoomDescription = new HashMap<String, String>();
+	public static Scanner scan = new Scanner(System.in);
 	
 	
 		public static void main(String[] args) {
 			RoomDesc();
 			System.out.println("You wake up in a room you have never seen before, you must find you way back to your world");
-			Scanner scan = new Scanner(System.in);
 			String playerCommand = " ";
 			String[] input;
 			Item x;
@@ -52,18 +52,18 @@ public class Game {
 				} else if (playerCommand.equals("x")) {
 					System.out.println("okay. Bye!");
 				} else if (input[0].equals("look"))  {
-					if(currentRoom.hasItem(input[1])) {
-						System.out.println("You look at the " + input[1]);
-					} else {
-						System.out.println("This item is not in the current room");
-					}
-					for(Item i : inventory) {
-						if(i.getName().equals(input[1])) {
-							System.out.println("You look at the " + input[1]);
-						} else {
-							System.out.println("The item is not in your inventory");
-						}
-					}
+					x = getItem(input[1]);
+					if(x == null) 
+						x = currentRoom.getItem(input[1]);
+					if(x == null)
+						System.out.println("There is no"+input[1]+".");
+					else 
+						x.look();
+					npc = Room.getNPC(input[1]);
+					if( npc == null )
+						System.out.println("The"+input[1]+"is not in this room");
+					else
+						npc.look();
 				} else if (input[0].equals("take")) {
 				
 						if(currentRoom.hasItem(input[1])) {
@@ -74,11 +74,12 @@ public class Game {
 						}
 				} else if (input[0].equals("use")) {
 						x = getItem(input[1]);
-						if(x == null) {
+						if(x == null) 
+							x = currentRoom.getItem(input[1]);
+						if(x == null)
 							System.out.println("You can not use the " + input[1] + ".");
-						} else {
+						else
 							x.use();
-						}
 				} else if(input[0].equals("save")) {
 					saveGame();
 				}else if(input[0].equals("talk")){

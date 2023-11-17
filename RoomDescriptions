@@ -1,5 +1,5 @@
 treeroom
-You are standing inside of a spacious room inside a giant tree. To the north is a door that brings you to the large yard that surrounds the tree. Above you is a Pirate Ship that floats above the tree.
+You are standing inside of a spacious room inside a giant tree. To the north is a door that brings you to the large yard that surrounds the tree. Above you is a Pirate Ship that floats above the tree. There is also a very cute puppy.
 #
 pirateship
 You are standing inside the captain's chamber of  pirate ship. There is a door to the north of you. There is a window to your south of you. A desk to you left with a skull on it. There is also a large wooden chest to your right.
@@ -17,10 +17,13 @@ throneroom_A
 You are standing in the throne room of a castle. In front of you is a large throne with a bright red carpet leading to it.  On your right there is a key on the ground. Leaning against the of the throne on your left is a large iron broadsword facing point down. There is a staircase leading down behind the thrown.
 #
 classroom
-You are standing inside of a large classroom. The building is made out of stone with carpets covering the floor and large bookshelves. A very ancient, medieval looking classroom. There is a wand with a very mysterious an strong aura on the teachers desk in the front.
+You are standing inside of a large classroom. The building is made out of stone with carpets covering the floor and large bookshelves. A very ancient, medieval looking classroom. There is a wand with a very mysterious an strong aura on the teachers desk in the front. With a locked door to your east.
 #
 classroom_A
-You are standing inside of a large classroom. The building is made out of stone with carpets covering the floor and large bookshelves. A very ancient, medieval looking classroom.
+You are standing inside of a large classroom. The building is made out of stone with carpets covering the floor and large bookshelves. A very ancient, medieval looking classroom. There is a locked door to your east.
+#
+classroom_B
+You are standing inside of a large classroom. The building is made out of stone with carpets covering the floor and large bookshelves. A very ancient, medieval looking classroom. There is a hallway to your east.
 #
 barn
 You are standing inside of a large barn. There are no life forms in the barn but it looks like it was used recently. With stacks of hay everywhere. At the end of the barn you see hay in the shape of what looks like a bed and a large egg sitting on it.
@@ -29,7 +32,7 @@ basement
 You are in the basement of the throne room. The lighting is very dim. You see cobwebs in every corner and a broken down smithy. Across from you is a crafting bench. This placed seemed to once be used by a blacksmith.
 #
 shipdeck
-You are on the deck of the pirate ship. The first thing you notice is a large cannon on the side. There are a couple of skeletons and other things amongst the deck.
+You are on the deck of the pirate ship. The first thing you notice is a large cannon on the side. There are a couple of skeletons and other things amongst the deck. To your south is the captains quarters.
 #
 hallway
 You are in a hallway. Your right and left are pitch black from the explosion. The only light is above you which lets you see a door to your north."

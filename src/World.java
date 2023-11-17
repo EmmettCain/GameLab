@@ -28,12 +28,16 @@ public class World {
 		OutsideTree.addExit(Classroom, 'e');
 		Classroom.addExit(OutsideTree, 'w');
 		ThroneRoom.addExit(Basement, 'd');
+		Basement.addExit(ThroneRoom, 'u');
 		PirateShip.addExit(ShipDeck, 'n');
 		Classroom.addExit(Hallway, 'e');
+		ShipDeck.addExit(PirateShip, 's');
 		ThroneRoom.setLocked(true);
 		Basement.setLocked(true);
 		Hallway.setLocked(true);
 		
+		NPC puppy = new Puppy();
+		TreeRoom.addNPC(puppy);
 		
 		Item egg = new Item("egg");
 		Barn.addItem(egg);
@@ -64,7 +68,7 @@ public class World {
 		Basement.addItem(CraftingBench);
 		CraftingBench.setDesc("Crafting table can combine certain items to make something else");
 		CraftingBench.setHeavy(true);
-		Item cannon = new Item("cannon");
+		Item cannon = new Cannon();
 		ShipDeck.addItem(cannon);
 		cannon.setDesc("A large, loaded cannon pointing off the side of the ship");
 		
