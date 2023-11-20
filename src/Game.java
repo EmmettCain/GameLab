@@ -21,6 +21,7 @@ public class Game {
 			System.out.println("You wake up in a room you have never seen before, you must find you way back to your world");
 			String playerCommand = " ";
 			String[] input;
+			Item v;
 			Item x;
 			NPC npc;
 			currentRoom = World.buildWorld();
@@ -80,7 +81,11 @@ public class Game {
 							System.out.println("You can not use the " + input[1] + ".");
 						else
 							x.use();
-				} else if(input[0].equals("save")) {
+				} else if(input[0].equals("give")) {
+					v= getItem(input[1]);
+					
+				
+				}else if(input[0].equals("save")) {
 					saveGame();
 				}else if(input[0].equals("talk")){
 					npc = currentRoom.getNPC(input[1]);
@@ -136,7 +141,6 @@ public class Game {
 		}
 		
 		public static void removeInventory(String n) {
-			
 			
 		}
 		

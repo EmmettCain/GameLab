@@ -17,6 +17,10 @@ public class NPC {
 		this.desc = desc;
 	}
 	
+	public void give(Item i) {
+		
+	}
+	
 	public void look() {
 		Game.print(desc);
 	}
