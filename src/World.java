@@ -32,12 +32,14 @@ public class World {
 		PirateShip.addExit(ShipDeck, 'n');
 		Classroom.addExit(Hallway, 'e');
 		ShipDeck.addExit(PirateShip, 's');
+		Hallway.addExit(Classroom, 's');
 		ThroneRoom.setLocked(true);
 		Basement.setLocked(true);
 		Hallway.setLocked(true);
 		
 		NPC puppy = new Puppy();
 		TreeRoom.addNPC(puppy);
+		
 		
 		Item egg = new Item("egg");
 		Barn.addItem(egg);
