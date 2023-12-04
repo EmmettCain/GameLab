@@ -14,18 +14,19 @@ public class Game {
 	public static ArrayList<Item> inventory = new ArrayList<Item>();
 	public static HashMap<String, String> RoomDescription = new HashMap<String, String>();
 	public static Scanner scan = new Scanner(System.in);
-	
+	private static GameGUI gui;
 	
 		public static void main(String[] args) {
 			RoomDesc();
-			System.out.println("You wake up in a room you have never seen before, you must find you way back to your world");
 			String playerCommand = " ";
 			String[] input;
 			Item v;
 			Item x;
 			NPC npc;
 			currentRoom = World.buildWorld();
-			System.out.println(currentRoom);
+			gui = new GameGUI();
+			Game.print("You wake up in a room you have never seen before, you must find you way back to your world");
+			Game.print(currentRoom);
 			while(!playerCommand.equals("x")) {
 				System.out.println("What do you want to do");
 				playerCommand = scan.nextLine();
@@ -44,25 +45,25 @@ public class Game {
 					move(playerCommand);
 				} else if (playerCommand.equals("i")) {
 					if(inventory.isEmpty()) {
-						System.out.println("You are carrying nothing");
+						Game.print("You are carrying nothing");
 					} else {
 						for(Item i : inventory) {
-							System.out.println(i);
+							Game.print(i);
 						}
 					}
 				} else if (playerCommand.equals("x")) {
-					System.out.println("okay. Bye!");
+					Game.print("okay. Bye!");
 				} else if (input[0].equals("look"))  {
 					x = getItem(input[1]);
 					if(x == null) 
 						x = currentRoom.getItem(input[1]);
 					if(x == null)
-						System.out.println("There is no"+input[1]+".");
+						Game.print("There is no"+input[1]+".");
 					else 
 						x.look();
 					npc = Room.getNPC(input[1]);
 					if( npc == null )
-						System.out.println("The"+input[1]+"is not in this room");
+						Game.print("The"+input[1]+"is not in this room");
 					else
 						npc.look();
 				} else if (input[0].equals("take")) {
@@ -71,14 +72,14 @@ public class Game {
 							Item item = currentRoom.getItem(input[1]);
 							item.take();
 						} else {
-							System.out.println("There is no "+input[1]+"!");
+							Game.print("There is no "+input[1]+"!");
 						}
 				} else if (input[0].equals("use")) {
 						x = getItem(input[1]);
 						if(x == null) 
 							x = currentRoom.getItem(input[1]);
 						if(x == null)
-							System.out.println("You can not use the " + input[1] + ".");
+							Game.print("You can not use the " + input[1] + ".");
 						else
 							x.use();
 				} else if(input[0].equals("give")) {
@@ -91,7 +92,7 @@ public class Game {
 					npc = currentRoom.getNPC(input[1]);
 					npc.talk();
 				}else {
-					System.out.println("Invalid command.");
+					Game.print("Invalid command.");
 				}
 
 //		currentRoom = currentRoom.getExit('e');
@@ -113,13 +114,13 @@ public class Game {
 			Room nextRoom = currentRoom.getExit(direction.charAt(0));
 			if(nextRoom != null) {
 				if(nextRoom.isLocked()) {
-					System.out.println("The room is locked");
+					Game.print("The room is locked");
 				} else {
 					currentRoom = nextRoom;
-					System.out.println(currentRoom);
+					Game.print(currentRoom);
 				}
 			} else {
-				System.out.println("You can't go that way");
+				Game.print("You can't go that way");
 			}
 		}
 		
@@ -132,9 +133,6 @@ public class Game {
 			return null;
 		}
 		
-		public static void print(String message) {
-			System.out.println(message+"\n");
-			}
 		
 		public static void addInventory(Item i) {
 			inventory.add(i);
@@ -198,6 +196,10 @@ public class Game {
 				e.printStackTrace();
 			}
 			
+		}
+		
+		public static void print(Object s) {
+			gui.print(s.toString());
 		}
 		
 		

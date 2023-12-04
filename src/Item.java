@@ -20,10 +20,10 @@ public class Item {
 	
 	public void take() {
 		if(isHeavy()){
-			System.out.println("That's too heavy to carry around");
+			Game.print("That's too heavy to carry around");
 		} else {
 			Game.inventory.add(Game.getCurrentRoom().removeItem(name));
-			System.out.println("You take the "+ name + ".");
+			Game.print("You take the "+ name + ".");
 		}
 	}
 	
@@ -44,7 +44,7 @@ public class Item {
 	}
 	
 	public void use() {
-			System.out.println("You can't use the" +name+ "yet...");
+		Game.print("You can't use the" +name+ "yet...");
 	}
 	
 	

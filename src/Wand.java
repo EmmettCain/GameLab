@@ -13,11 +13,11 @@ public class Wand extends Item{
 
 	public void use() {
 		if(Game.getCurrentRoom().getName().equals("outsidetree")) {
-			System.out.println("You wave the wand and the Throne Room portal opens!");
+			Game.print("You wave the wand and the Throne Room portal opens!");
 			Room ThroneRoom = Game.getCurrentRoom().getExit('n');
 			ThroneRoom.setLocked(false);
 		} else {
-			System.out.println("You wave the wand around");
+			Game.print("You wave the wand around");
 		}
 	}
 }

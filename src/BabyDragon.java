@@ -2,7 +2,7 @@
 public class BabyDragon extends NPC{
 
 	public BabyDragon() {
-		super("dragon", "A baby dragon looks at you with curious, heartfelt eyes.");
+		super("kaisel", "A baby dragon looks at you with curious, heartfelt eyes.");
 	}
 	
 	int i = 0;
@@ -21,7 +21,7 @@ public class BabyDragon extends NPC{
 				say("Hello! My name is Kaisel. Is is nice to meet you");
 				String option[] = {
 						"Hi Kaisel. It is nice to meet you to.",
-						"i have something else to do."
+						"I have something else to do."
 				};
 				getResponse(option);
 			}else if(i == 2) {
@@ -31,8 +31,15 @@ public class BabyDragon extends NPC{
 						"I'm sorry, I can't give it to you."
 				};
 				getResponse(option);
-			} else if(i == 2 && x == null) {
-				
+			} else if(i >= 3 && x == null) {
+				say("Thanks for giving me that sword ealier. I hope what I gave you helped");
+			}else if(i >= 3 && x != null) {
+				say("That sword your holding was the sword that the man who used protected my mother once held. May I have it?");
+				String option[] = {
+						"Yes, I will gladly give it to you",
+						"I'm sorry, I can't give it to you."
+				};
+				getResponse(option);
 			}
 		}
 		
