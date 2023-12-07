@@ -18,18 +18,19 @@ public class Game {
 	
 		public static void main(String[] args) {
 			RoomDesc();
-			String playerCommand = " ";
-			String[] input;
-			Item v;
-			Item x;
-			NPC npc;
 			currentRoom = World.buildWorld();
 			gui = new GameGUI();
 			Game.print("You wake up in a room you have never seen before, you must find you way back to your world");
 			Game.print(currentRoom);
-			while(!playerCommand.equals("x")) {
-				System.out.println("What do you want to do");
-				playerCommand = scan.nextLine();
+			Game.print("What do you want to do");
+			
+		}
+		
+		public static void processCommand(String playerCommand) {
+			String[] input;
+			Item v;
+			Item x;
+			NPC npc;
 				input = playerCommand.split(" ");
 				if(playerCommand.equals("e")) {
 					move(playerCommand);
@@ -52,7 +53,7 @@ public class Game {
 						}
 					}
 				} else if (playerCommand.equals("x")) {
-					Game.print("okay. Bye!");
+					Game.print("Okay. Bye!");
 				} else if (input[0].equals("look"))  {
 					x = getItem(input[1]);
 					if(x == null) 
@@ -100,10 +101,9 @@ public class Game {
 //		System.out.println("\nNow we'll move west!");
 //		currentRoom = currentRoom.getExit('w');
 //		System.out.println(currentRoom);
-		
+				Game.print("What do you want to do");
 			}
-			scan.close();
-		}
+		
 		
 		
 		public static Room getCurrentRoom() {
@@ -139,6 +139,7 @@ public class Game {
 		}
 		
 		public static void removeInventory(String n) {
+			
 			
 		}
 		

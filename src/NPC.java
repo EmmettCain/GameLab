@@ -3,6 +3,8 @@ public class NPC {
 
 	private String name;
 	private String desc;
+	public static Boolean talking = false;
+	public static NPC NPCname;
 	
 	public NPC(String name) {
 		this.name = name;
@@ -49,9 +51,8 @@ public class NPC {
 			Game.print("Option "+(i+1)+": "+options[i]);
 		} 
 		Game.print("Enter an option(1-"+options.length+"):");
-		int option = Game.scan.nextInt();
-		Game.scan.nextLine();
-		response(option);
+		NPCname = this;
+		talking = true;
 	}
 
 	public String getName() {

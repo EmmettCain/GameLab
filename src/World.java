@@ -16,6 +16,7 @@ public class World {
 		Room Basement = new Room("basement");
 		Room ShipDeck = new Room("shipdeck");
 		Room Hallway = new Room("hallway");
+		Room Office = new Room("office");
 	
 		TreeRoom.addExit(PirateShip, 'u');
 		TreeRoom.addExit(OutsideTree, 'n');
@@ -33,9 +34,11 @@ public class World {
 		Classroom.addExit(Hallway, 'e');
 		ShipDeck.addExit(PirateShip, 's');
 		Hallway.addExit(Classroom, 's');
+		Hallway.addExit(Office, 'n');
 		ThroneRoom.setLocked(true);
 		Basement.setLocked(true);
 		Hallway.setLocked(true);
+		Office.setLocked(true);
 		
 		NPC puppy = new Puppy();
 		TreeRoom.addNPC(puppy);
