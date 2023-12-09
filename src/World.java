@@ -35,6 +35,7 @@ public class World {
 		ShipDeck.addExit(PirateShip, 's');
 		Hallway.addExit(Classroom, 's');
 		Hallway.addExit(Office, 'n');
+		Office.addExit(Hallway, 's');
 		ThroneRoom.setLocked(true);
 		Basement.setLocked(true);
 		Hallway.setLocked(true);
@@ -60,6 +61,10 @@ public class World {
 		Item engraving = new Chain();
 		OutsideTree.addItem(engraving);
 		engraving.setDesc("Large circular engraving above the portal to the tree room");
+		Item book = new Item("book");
+		book.setDesc("A large book, as you flip through it you realise it is a Grimoire filled with magic");
+		Office.addItem(book);
+		
 		
 		
 		Item chest = new Item("chest");
@@ -69,7 +74,7 @@ public class World {
 		Item key = new Key();
 		key.setDesc("It's an ornate key.");
 		ThroneRoom.addItem(key);
-		Item CraftingBench = new Item("CraftingBench");
+		Item CraftingBench = new CraftingBench();
 		Basement.addItem(CraftingBench);
 		CraftingBench.setDesc("Crafting table can combine certain items to make something else");
 		CraftingBench.setHeavy(true);

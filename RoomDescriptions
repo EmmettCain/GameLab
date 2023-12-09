@@ -28,6 +28,9 @@ You are standing inside of a large classroom. The building is made out of stone 
 barn
 You are standing inside of a large barn. There are no life forms in the barn but it looks like it was used recently. With stacks of hay everywhere. At the end of the barn you see hay in the shape of what looks like a bed and a large egg sitting on it.
 #
+barn_A
+You are standing inside of a large barn. At the end of the barn of the barn you see Kaisel, the baby dragon.
+#
 basement
 You are in the basement of the throne room. The lighting is very dim. You see cobwebs in every corner and a broken down smithy. Across from you is a crafting bench. This placed seemed to once be used by a blacksmith.
 #
@@ -35,5 +38,14 @@ shipdeck
 You are on the deck of the pirate ship. The first thing you notice is a large cannon on the side. There are a couple of skeletons and other things amongst the deck. To your south is the captains quarters.
 #
 hallway
-You are in a hallway. Your right and left are pitch black from the explosion. The only light is above you which lets you see a door to your north. And the whole the the classroom to your south."
+You are in a hallway. Your right and left are pitch black from the explosion. The only light is above you which lets you see a locked door to your north. And the whole the the classroom to your south.
+#
+hallway_A
+You are in a hallway. Your right and left are pitch black from the explosion. The only light is above you which lets you see an open door to your north. And the whole the the classroom to your south.
+#
+office
+You are in a large office. There are bookshelves lining each wall and a large desk in front of you. On the desk you see a large book. To your south there is an exit back into the hallway."
+#
+office_A
+You are in a large office. There are bookshelves lining each wall and a large desk in front of you. To your south there is an exit back through the door.
 #

@@ -19,8 +19,8 @@ public class NPC {
 		this.desc = desc;
 	}
 	
-	public void give(Item i) {
-		
+	public static void give(Item i) {
+		Game.inventory.add(i);
 	}
 	
 	public void look() {

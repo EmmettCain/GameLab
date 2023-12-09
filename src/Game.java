@@ -139,7 +139,8 @@ public class Game {
 		}
 		
 		public static void removeInventory(String n) {
-			
+			Item v = getItem(n);
+			inventory.remove(v);
 			
 		}
 		
