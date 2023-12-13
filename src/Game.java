@@ -95,19 +95,22 @@ public class Game {
 				}else {
 					Game.print("Invalid command.");
 				}
-
-//		currentRoom = currentRoom.getExit('e');
-//		System.out.println(currentRoom);
-//		System.out.println("\nNow we'll move west!");
-//		currentRoom = currentRoom.getExit('w');
-//		System.out.println(currentRoom);
-				Game.print("What do you want to do");
+				if(getCurrentRoom().getName().equals("home")) {
+					Game.print("You wake and you are in your bed at home.");
+					Game.print("Congragulations!. You have succesfully made it home and beaten the game!");
+				} else {
+					Game.print("What do you want to do");
+				}
 			}
 		
 		
 		
 		public static Room getCurrentRoom() {
 			return currentRoom;
+		}
+		
+		public static Room setCurrentRoom(Room r) {
+			return currentRoom = r;
 		}
 		
 		public static void move(String direction) {
